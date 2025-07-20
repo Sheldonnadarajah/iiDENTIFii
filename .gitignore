@@ -1,0 +1,57 @@
+
+# .NET Core / .NET Standard / .NET Framework
+bin/
+obj/
+**/bin/
+**/obj/
+**/TestResults/
+**/out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# Build results
+**/Debug/
+**/Release/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+*.nuspec
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Others
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+TestResult.xml
+*.vspscc
+*.vssscc
+*.dbmdl
+*.pdb
+*.cache
+*.log
+*.tlog
+*.vs/
+*.vsscc
+*.ncrunch*
+*.localhistory
+*.DS_Store
+*.sln.docstates
+/.vs/
