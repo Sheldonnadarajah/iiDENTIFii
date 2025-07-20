@@ -1,4 +1,4 @@
-# AspireTest Solution
+# Forum Solution
 
 ## Overview
 This solution is a clean architecture ASP.NET Core Web API project using Dapper for data access and SQL Server for storage. It features JWT authentication, claims-based user identification, and a modular, testable structure. The project is designed for maintainability, scalability, and ease of testing.
@@ -94,6 +94,24 @@ Once the application is running, open the Aspire dashboard (URL shown in the ter
 - The solution follows best practices for dependency injection, testability, and maintainability.
 - Each time the solution is run the tables are dropped and re-created to be able to maintain a smaller database.
 - My preference would have been to create stored procedures and not inline sql for the compile time / query plan advantage. Due to this being a test inline sql is fine.
+- Tests have been implemented due to time I have not increased coverage
+
+## Swagger Run Order
+
+Here are some example flows to test the API functionality using Swagger.
+
+### Scenario: Basic User and Moderation Flow
+
+| Step | Action | HTTP Method | Endpoint | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | **Register User** | `POST` | `/api/auth/register` | Register a new user to get credentials. |
+| 2 | **Login User** | `POST` | `/api/auth/login` | Log in with the new user to obtain a JWT token. Remember to authorize subsequent requests. |
+| 3 | **Create Post** | `POST` | `/api/posts` | Create a new post using the authenticated user's token. |
+| 4 | **Add Comment** | `POST` | `/api/posts/{postId}/comments` | Add a comment to the newly created post. |
+| 5 | **Like Post** | `POST` | `/api/posts/{postId}/like` | Like the post. |
+| 6 | **Login Moderator** | `POST` | `/api/auth/login` | Log in as the `Moderator` to get an admin-level JWT token. |
+| 7 | **Tag Post** | `POST` | `/api/moderation/posts/{postId}/tags` | Use the moderator token to add a tag to the post created earlier. |
+| 8 | **Get Post with Details**| `GET` | `/api/posts/{postId}` | Retrieve the post to see the new comment, like, and tag. |
 
 ---
 
